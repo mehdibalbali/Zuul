@@ -15,6 +15,8 @@
  * @version 2006.03.30
  */
 
+//code
+ 
 public class Game 
 {
     private Parser parser;
