@@ -49,6 +49,25 @@ public class Game
         
         piece1.setExits("east", piece2);
         piece1.setExits("south", piece3);
+        piece1.setExits("north", piece4);
+
+        piece2.setExits("west", piece1);
+        piece2.setExits("east", piece3);
+
+        piece3.setExits("north", piece1);
+        piece3.setExits("west", piece2);
+
+        piece4.setExits("south", piece1);
+        piece4.setExits("north", piece7);
+        piece4.setExits("west", piece5);
+        piece4.setExits("east", piece6);
+
+        piece5.setExits("east", piece4);
+
+        piece6.setExits("west", piece4);
+
+        piece7.setExits("south", piece4);
+
         //TODO les autres pieces 
 
         currentRoom = piece1;  // start game outside
