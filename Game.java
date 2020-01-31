@@ -125,6 +125,10 @@ public class Game
             goRoom(command);
         else if (commandWord.equals("quit"))
             wantToQuit = quit(command);
+        else if(commandWord.equals("look"))
+            look();
+        else if (commandWord.equals("eat"))
+            System.out.println("you are eating something");
 
         return wantToQuit;
     }
@@ -151,6 +155,7 @@ public class Game
      */
     private void goRoom(Command command) 
     {
+        //TODO
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
@@ -198,6 +203,14 @@ public class Game
 
 
     }
+    /**
+     * "look" was entered.
+     * Look the entire room. (now, this function is useless)
+     */
+    private void look(){
+        System.out.println(currentRoom.getLongDescription());
+    }
+
 
     /** 
      * "Quit" was entered. Check the rest of the command to see

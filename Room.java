@@ -41,10 +41,20 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(String direction, Room neighbor) 
+    public void setExits(String direction, Room neighbor)
     {
         this.exits.put(direction, neighbor);
     }
+    
+    /**
+     * Return the room that is reached if we go from this
+     * room in direction "direction". If there is no room in
+     * that direction, return null.
+     */
+    public Room getExit(String direction) {
+        return this.exits.get(direction);
+    }
+
 
     /**
      * Return a description of the room's exits,
@@ -66,5 +76,15 @@ public class Room
     {
         return description;
     }
+    /**
+     * Return a long description of this room, of the form:
+     * Room description.
+     * Exits: north west
+     * @return A description of the room, including exits.
+     */
+    public String getLongDescription(){
+        return this.description + ".\n" + this.getExitString();
+    }
+
 
 }
