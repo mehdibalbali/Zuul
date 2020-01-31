@@ -12,8 +12,11 @@
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
  */
+
 import java.util.HashMap;
-public class Room 
+import java.util.Set;
+
+public class Room
 {
     public String description;
     private HashMap<String, Room> exits;
@@ -41,6 +44,19 @@ public class Room
     public void setExits(String direction, Room neighbor) 
     {
         this.exits.put(direction, neighbor);
+    }
+
+    /**
+     * Return a description of the room's exits,
+     * for example, "Exits: north west".
+     * @return A description of the available exits.
+     */
+    public String getExitString(){
+        String returnString = "";
+        Set<String> keys = this.exits.keySet();
+        for (String exit : keys)
+            returnString += " " + exit;
+        return returnString;
     }
 
     /**
