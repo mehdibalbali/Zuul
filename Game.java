@@ -34,23 +34,20 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
+        Room piece1, piece2, piece3, piece4, piece5, piece6, piece7;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        piece1 = new Room("piéce 1");
+        piece2 = new Room("piéce2");
+        piece3 = new Room("piéce3");
+        piece4 = new Room("piéce 4");
+        piece5 = new Room("pièce 5");
+        piece6 = new Room("pièce 6");
+        piece7 = new Room("pièce 7");
         
-        // initialise room exits
-        outside.setExits(null, theatre, lab, pub);
-        theatre.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        
 
-        currentRoom = outside;  // start game outside
+        currentRoom = piece1;  // start game outside
     }
 
     /**
@@ -83,14 +80,14 @@ public class Game
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
-        if(currentRoom.northExit != null)
+        /* if(currentRoom.northExit != null)
             System.out.print("north ");
         if(currentRoom.eastExit != null)
             System.out.print("east ");
         if(currentRoom.southExit != null)
             System.out.print("south ");
         if(currentRoom.westExit != null)
-            System.out.print("west ");
+            System.out.print("west "); */
         System.out.println();
     }
 
@@ -148,7 +145,7 @@ public class Game
         }
 
         String direction = command.getSecondWord();
-
+/* 
         // Try to leave current room.
         Room nextRoom = null;
         if(direction.equals("north")) {
@@ -180,7 +177,7 @@ public class Game
             if(currentRoom.westExit != null)
                 System.out.print("west ");
             System.out.println();
-        }
+        } */
     }
 
     /** 
