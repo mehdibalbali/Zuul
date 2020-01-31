@@ -47,7 +47,9 @@ public class Game
         piece6 = new Room("pièce 6");
         piece7 = new Room("pièce 7");
         
-        
+        piece1.setExits("east", piece2);
+        piece1.setExits("south", piece3);
+        //TODO les autres pieces 
 
         currentRoom = piece1;  // start game outside
     }
