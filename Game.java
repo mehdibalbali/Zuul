@@ -24,8 +24,9 @@ public class Game
      * Create the game and initialise its internal map.
      */
     public Game() 
-    {
+    {   Command c = new Command("go", "east");
         createRooms();
+        goRoom(c);
         parser = new Parser();
     }
 
@@ -153,18 +154,19 @@ public class Game
      * Try to go to one direction. If there is an exit, enter
      * the new room, otherwise print an error message.
      */
-    private void goRoom(Command command) 
+    private void goRoom(Command command)
     {
-        //TODO
-        if(!command.hasSecondWord()) {
+        if(!command.hasSecondWord())
+        {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
         }
-        // Try to leave current room.
+
         String direction = command.getSecondWord();
-        Room nextRoom = null;
-        currentRoom.setExits(direction, currentRoom);
+
+        // Try to leave current room.
+        Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
@@ -172,10 +174,10 @@ public class Game
         else {
             currentRoom = nextRoom;
             printLocationInfo();
+            System.out.println("You are " + currentRoom.getLongDescription());
         }
-        
-     
     }
+
     private void printLocationInfo(){
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: "+ currentRoom.getExitString());
