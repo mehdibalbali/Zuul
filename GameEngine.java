@@ -148,4 +148,8 @@ public class GameEngine {
         gui.println("Thank you for playing.  Good bye.");
         gui.enable(false);
     }
+
+    public Parser getParser() {
+        return parser;
+    }
 }
