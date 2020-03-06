@@ -1,36 +1,24 @@
-/**
- * Class Room - a room in an adventure game.
- *
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
- *
- * A "Room" represents one location in the scenery of the game.  It is 
- * connected to other rooms via exits.  The exits are labelled north, 
- * east, south, west.  For each direction, the room stores a reference
- * to the neighboring room, or null if there is no exit in that direction.
- * 
- * @author  Michael Kolling and David J. Barnes
- * @version 2006.03.30
- */
-
 import java.util.HashMap;
 import java.util.Set;
 
-public class Room
-{
-    public String description;
-    private HashMap<String, Room> exits;
-
+public class Room {
+	private HashMap<String, Room> exits;
+	private String description;
+	private String imageName;
+	
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description) 
+    public Room(String description, String image) 
     {
         this.description = description;
-        this.exits = new HashMap<String, Room>();
+        exits = new HashMap<String, Room>();
+        imageName = image;
+        
+        //this.exits.put(direction, neighbor);
     }
 
     /**
@@ -41,32 +29,24 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
+    /*public void setExits(Room north, Room east, Room south, Room west) 
+    {
+        if(north != null)
+            northExit = north;
+        if(east != null)
+            eastExit = east;
+        if(south != null)
+            southExit = south;
+        if(west != null)
+            westExit = west;
+    }*/
     public void setExits(String direction, Room neighbor)
     {
-        this.exits.put(direction, neighbor);
+        exits.put(direction, neighbor);
     }
     
-    /**
-     * Return the room that is reached if we go from this
-     * room in direction "direction". If there is no room in
-     * that direction, return null.
-     */
     public Room getExit(String direction) {
         return this.exits.get(direction);
-    }
-
-
-    /**
-     * Return a description of the room's exits,
-     * for example, "Exits: north west".
-     * @return A description of the available exits.
-     */
-    public String getExitString(){
-        String returnString = "";
-        Set<String> keys = this.exits.keySet();
-        for (String exit : keys)
-            returnString += " " + exit;
-        return returnString;
     }
 
     /**
@@ -76,15 +56,21 @@ public class Room
     {
         return description;
     }
-    /**
-     * Return a long description of this room, of the form:
-     * Room description.
-     * Exits: north west
-     * @return A description of the room, including exits.
-     */
+    
     public String getLongDescription(){
         return this.description + ".\n" + this.getExitString();
     }
-
-
+    
+    public String getExitString(){
+        String returnString = "";
+        Set<String> keys = this.exits.keySet();
+        for (String exit : keys)
+            returnString += " " + exit;
+        return returnString;
+    }
+    
+    public String getImageName()
+	{
+		return imageName;
+	}
 }
